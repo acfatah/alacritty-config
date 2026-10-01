@@ -1,15 +1,27 @@
 # alacritty config
 
-On windows platform, checkout this repository to:
+On windows platform, checkout this repository to
+`C:\Users\<USER>\AppData\Roaming\alacritty`. The commands below resolve that
+path for you, so they can be copied as is.
 
-```
-C:\Users\<USER>\AppData\Roaming\alacritty
+From cmd:
+
+```bat
+git clone git@github.com:acfatah/alacritty-config.git "%APPDATA%\alacritty"
 ```
 
-or using wsl,
+From PowerShell:
+
+```powershell
+git clone git@github.com:acfatah/alacritty-config.git "$env:APPDATA\alacritty"
+```
+
+or using wsl, which asks Windows for `%APPDATA%` and converts it with
+`wslpath`:
 
 ```bash
-/mnt/c/Users/<USER>/AppData/Roaming/alacritty
+APPDATA_WSL="$(wslpath "$(cmd.exe /c echo %APPDATA% 2>/dev/null | tr -d '\r')")"
+git clone git@github.com:acfatah/alacritty-config.git "$APPDATA_WSL/alacritty"
 ```
 
 ## Config files
@@ -90,16 +102,17 @@ function alaps  { alacritty --config-file "$env:APPDATA\alacritty\ps.toml" }
 
 ### Option 4: From inside WSL
 
-Call the Windows executable and convert the config path with `wslpath -w`:
+Call the Windows executable with the Windows config path. `cmd.exe` supplies
+`%APPDATA%`, and `tr` strips the carriage return it prints:
 
 ```bash
-alacritty.exe --config-file "$(wslpath -w /mnt/c/Users/<USER>/AppData/Roaming/alacritty/wsl.toml)"
+alacritty.exe --config-file "$(cmd.exe /c echo %APPDATA% 2>/dev/null | tr -d '\r')\alacritty\wsl.toml"
 ```
 
 To make it a short command, add an alias to `~/.bashrc` (or `~/.zshrc`):
 
 ```bash
-alias alawsl='alacritty.exe --config-file "$(wslpath -w /mnt/c/Users/<USER>/AppData/Roaming/alacritty/wsl.toml)"'
+alias alawsl='alacritty.exe --config-file "$(cmd.exe /c echo %APPDATA% 2>/dev/null | tr -d "\r")\alacritty\wsl.toml"'
 ```
 
 If `alacritty.exe` is not found, use the full path:
