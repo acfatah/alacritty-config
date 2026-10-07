@@ -31,6 +31,7 @@ git clone git@github.com:acfatah/alacritty-config.git "$APPDATA_WSL/alacritty"
 | `alacritty.toml` | Default config, loaded automatically (PowerShell)     |
 | `ps.toml`        | PowerShell, Alacritty's default shell on Windows      |
 | `wsl.toml`       | WSL (`wsl.exe --cd ~`), starting in the Linux home    |
+| `gitbash.toml`   | Git Bash as a login shell, from Git for Windows       |
 
 All of them import the color theme from `themes/xterm.toml`.
 
@@ -53,11 +54,13 @@ The examples below assume the default installer path. See
    ```
 
 3. Name it, e.g. `Alacritty WSL`, and click **Finish**.
-4. Repeat with `ps.toml` for a PowerShell shortcut, if wanted.
+4. Repeat with `ps.toml` or `gitbash.toml` for a PowerShell or Git Bash
+   shortcut, if wanted.
 
 Optional tweaks in the shortcut's **Properties**:
 
-- **Start in**: set to `%USERPROFILE%` to open in your home folder.
+- **Start in**: set to `%USERPROFILE%` to open in your home folder. Git Bash
+  starts in this folder, so set it for a Git Bash shortcut.
 - **Shortcut key**: assign a global hotkey, e.g. `Ctrl + Alt + T`.
 - **Change Icon…**: browse to `alacritty.exe` to use its icon.
 
@@ -98,6 +101,7 @@ To make it a short command, add a function to your PowerShell profile
 ```powershell
 function alawsl { alacritty --config-file "$env:APPDATA\alacritty\wsl.toml" }
 function alaps  { alacritty --config-file "$env:APPDATA\alacritty\ps.toml" }
+function alagit { alacritty --config-file "$env:APPDATA\alacritty\gitbash.toml" }
 ```
 
 ### Option 4: From inside WSL
@@ -134,6 +138,8 @@ import = ["wsl.toml"]
 - **Install path differs** for winget, Scoop, or portable installs. Find
   yours with `where.exe alacritty` in cmd, or
   `(Get-Command alacritty).Source` in PowerShell.
+- **Git installed elsewhere?** Edit `program` in `gitbash.toml`. Find Git
+  with `where.exe git`; `bash.exe` sits in the `bin` folder next to `cmd`.
 - **One-off overrides** don't need a new file. Use `-o` / `--option`,
   e.g. `alacritty --config-file "%APPDATA%\alacritty\wsl.toml" -o font.size=11`.
 - **Live reload**: saving a config file applies the change to open windows,
