@@ -48,7 +48,51 @@ git clone git@github.com:acfatah/alacritty-config.git "$APPDATA_WSL/alacritty"
 
 `wsl.toml` imports its color theme from
 `themes/github_dark_high_contrast.toml`. The others import
-`themes/xterm.toml`.
+`themes/xterm.toml`. Every config also imports `font.toml`, which sets the
+font for all of them; see [Font](#font).
+
+## Font
+
+The configs use **GeistMono Nerd Font Mono**: the
+[Geist Mono](https://github.com/vercel/geist-font) typeface, patched with
+icons by [Nerd Fonts](https://www.nerdfonts.com/font-downloads).
+
+The *Mono* variant keeps every icon one cell wide, so prompts, file icons
+and status lines stay aligned in the terminal grid. The non-Mono variant has
+wider icons that can overlap the next character.
+
+### Install
+
+1. Download the zip:
+   https://github.com/ryanoasis/nerd-fonts/releases/latest/download/GeistMono.zip
+2. Extract it, select every `GeistMonoNerdFontMono-*.otf` file, right-click,
+   and choose **Install** (current user) or **Install for all users**.
+3. Restart Alacritty. Live reload picks up config edits, but not newly
+   installed fonts.
+
+To check the install, open **Settings → Personalization → Fonts** and search
+for "GeistMono". The family name the configs use is exactly
+`GeistMono Nerd Font Mono`.
+
+**WSL:** Alacritty is a Windows program, so the font is installed on
+Windows. Nothing needs installing inside WSL.
+
+### Usage
+
+- **Every config:** edit `font.toml` to change the font or size for all of
+  them at once.
+- **One config:** add its own `[font]` keys, e.g. `size = 11.0`. Keys in the
+  config file win over the ones it imports.
+- **One-off:** pass `-o font.size=11` on the command line; see [Tips](#tips).
+
+### Troubleshooting
+
+- **Alacritty uses another font:** the family name is misspelled, or
+  Alacritty was not restarted after the install.
+- **Bold looks wrong:** some font files are missing. Install all of them,
+  including `GeistMonoNerdFontMono-Bold.otf`.
+- **Icons show as boxes or overlap the next character:** a font without
+  Nerd Font icons is in use, or the wider non-Mono variant.
 
 ## Starting Alacritty with a config
 
