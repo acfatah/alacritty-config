@@ -1,5 +1,18 @@
 # alacritty config
 
+<p>
+  <a href="./LICENSE">
+    <img
+      alt="License"
+      src="https://img.shields.io/github/license/acfatah/alacritty-config?style=flat-square"
+    ></a>
+  <a href="https://github.com/acfatah/alacritty-config/commits/main">
+    <img
+      alt="Last commit"
+      src="https://img.shields.io/github/last-commit/acfatah/alacritty-config?display_timestamp=committer&style=flat-square"
+    ></a>
+</p>
+
 On windows platform, checkout this repository to
 `C:\Users\<USER>\AppData\Roaming\alacritty`. The commands below resolve that
 path for you, so they can be copied as is.
@@ -148,3 +161,11 @@ import = ["wsl.toml"]
   so there is no need to restart.
 - **Use absolute paths** (or `%APPDATA%`) in shortcuts. A relative
   `--config-file` path resolves against the shortcut's *Start in* folder.
+
+## License
+
+This repository is released under the MIT license; see [LICENSE](./LICENSE).
+
+The theme files in `themes/` come from
+https://github.com/alacritty/alacritty-theme and are licensed under the
+Apache-2.0 license.
