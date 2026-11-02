@@ -33,7 +33,9 @@ git clone git@github.com:acfatah/alacritty-config.git "$APPDATA_WSL/alacritty"
 | `wsl.toml`       | WSL (`wsl.exe --cd ~`), starting in the Linux home    |
 | `gitbash.toml`   | Git Bash as a login shell, from Git for Windows       |
 
-All of them import the color theme from `themes/xterm.toml`.
+`wsl.toml` imports its color theme from
+`themes/github_dark_high_contrast.toml`. The others import
+`themes/xterm.toml`.
 
 ## Starting Alacritty with a config
 

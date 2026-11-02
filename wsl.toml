@@ -1,5 +1,5 @@
 [general]
-import = ["themes/xterm.toml"]
+import = ["themes/github_dark_high_contrast.toml"]
 
 [terminal]
 [terminal.shell]
