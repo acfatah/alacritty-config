@@ -1,5 +1,5 @@
 [general]
-import = ["themes/xterm.toml"]
+import = ["themes/xterm.toml", "font.toml"]
 
 [terminal]
 [terminal.shell]
@@ -10,11 +10,3 @@ args = ["--login", "-i"]
 [env]
 # Git Bash's ncurses has no "alacritty" terminfo entry
 TERM = "xterm-256color"
-
-[font]
-size = 9.0
-
-# Pick and install compatible fonts from https://www.nerdfonts.com/font-downloads
-normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
-bold   = { family = "0xProto Nerd Font Mono", style = "Bold" }
-italic = { family = "0xProto Nerd Font Mono", style = "Italic" }

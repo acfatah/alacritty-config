@@ -1,0 +1,8 @@
+# Shared font settings, imported by every config in this folder.
+# Installation and usage: see the "Font" section in README.md.
+[font]
+size = 9.0
+
+normal = { family = "GeistMono Nerd Font Mono", style = "Regular" }
+bold   = { family = "GeistMono Nerd Font Mono", style = "Bold" }
+italic = { family = "GeistMono Nerd Font Mono", style = "Italic" }

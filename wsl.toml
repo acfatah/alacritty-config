@@ -1,20 +1,7 @@
 [general]
-import = ["themes/github_dark_high_contrast.toml"]
+import = ["themes/github_dark_high_contrast.toml", "font.toml"]
 
 [terminal]
 [terminal.shell]
 program = "wsl.exe"
 args = ["--cd", "~"]
-
-[font]
-size = 9.0
-
-# Pick and install compatible fonts from https://www.nerdfonts.com/font-downloads
-#normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
-#bold   = { family = "0xProto Nerd Font Mono", style = "Bold" }
-#italic = { family = "0xProto Nerd Font Mono", style = "Italic" }
-
-normal = { family = "GeistMono Nerd Font Mono", style = "Regular" }
-bold   = { family = "GeistMono Nerd Font Mono", style = "Bold" }
-italic = { family = "GeistMono Nerd Font Mono", style = "Italic" }
-
