@@ -94,6 +94,35 @@ Windows. Nothing needs installing inside WSL.
 - **Icons show as boxes or overlap the next character:** a font without
   Nerd Font icons is in use, or the wider non-Mono variant.
 
+## WSL directory colors
+
+`ls` marks world-writable directories with a green background. The default
+`LS_COLORS` draws them as blue text on ANSI green, and the bright green of
+`themes/github_dark_high_contrast.toml` makes that text barely readable.
+
+`dircolors` is the default `dircolors -p` database with two entries changed.
+They use fixed 256-color backgrounds, which the theme does not override:
+
+| Entry                   | Example          | Default        | Here                          |
+| ----------------------- | ---------------- | -------------- | ----------------------------- |
+| `OTHER_WRITABLE`        | `/mnt/c` folders | blue on green  | bold white on dark green (22) |
+| `STICKY_OTHER_WRITABLE` | `/tmp`           | black on green | bold white on green (28)      |
+
+### Install
+
+Ubuntu's default `~/.bashrc` already loads `~/.dircolors` when it exists.
+Symlink the file from inside WSL, then open a new terminal:
+
+```bash
+ln -s /mnt/c/Users/<you>/AppData/Roaming/alacritty/dircolors ~/.dircolors
+```
+
+- **Line endings:** `.gitattributes` keeps `dircolors` at LF, even with
+  Git for Windows' `core.autocrlf`. CRLF line endings would corrupt the
+  color codes.
+- **Check it:** `echo "$LS_COLORS" | tr : '\n' | grep -E '^(ow|tw)='`
+  should print `ow=01;37;48;5;22` and `tw=01;37;48;5;28`.
+
 ## Starting Alacritty with a config
 
 Starting `alacritty.exe` with no arguments loads `alacritty.toml` from this
